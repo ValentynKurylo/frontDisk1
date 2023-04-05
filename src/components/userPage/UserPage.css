@@ -1,0 +1,134 @@
+.UserPageMain{
+    display: flex;
+}
+.UserPageLeft{
+    width: 40vw;
+}
+.UserPageRight{
+    width: 60vw;
+}
+.avatar1{
+    width: 25vw;
+    height: 25vw;
+    border-radius: 30%;
+    margin: 20px;
+    border: 2px silver solid;
+}
+
+.avatarInput{
+    content: 'Select some files';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    width: 18vw;
+    font-size: 1vw;
+    font-family: Georgia;
+    color: #566885;
+    margin-left: 5px;
+}
+.avatarBTN{
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    margin: 10px;
+    font-size: 1.5vw;
+    font-family: Georgia;
+    color: #566885;
+}
+
+.UserInfo{
+    margin: 20px;
+    font-size: 2.5vw;
+    font-family: Georgia;
+    color: #566885;
+    justify-items: center;
+}
+.UserName{
+    margin: 10px;
+    font-size: 2vw;
+    font-family: Georgia;
+    color: black;
+    justify-items: center;
+}
+@media screen and (max-width: 800px){
+    .UserPageLeft{
+        width: 50vw;
+    }
+    .UserPageRight{
+        width: 50vw;
+    }
+    .avatar1{
+        width: 30vw;
+        height: 30vw;
+        border-radius: 30%;
+        margin: 20px;
+        border: 2px silver solid;
+    }
+
+    .avatarInput{
+        width: 22vw;
+        font-size: 1.6vw;
+    }
+    .avatarBTN{
+        font-size: 2vw;
+    }
+
+    .UserInfo{
+        margin: 25px;
+        font-size: 3vw;
+
+    }
+    .UserName{
+        margin: 10px;
+        font-size: 2.5vw;
+    }
+}
+@media screen and (max-width: 600px){
+    .UserPageMain{
+        display: inline-block;
+    }
+    .UserPageLeft{
+        margin-left: 20vw;
+    }
+    .UserPageRight{
+        justify-content: center;
+    }
+    .avatar1{
+        width: 40vw;
+        height: 40vw;
+        border-radius: 30%;
+        margin: 20px;
+        border: 2px silver solid;
+    }
+
+    .avatarInput{
+        width: 22vw;
+        font-size: 2vw;
+    }
+    .avatarBTN{
+        font-size: 2.5vw;
+    }
+
+    .UserInfo{
+        margin-top: 50px;
+        font-size: 4vw;
+
+    }
+    .UserName{
+        font-size: 3.5vw;
+    }
+}
