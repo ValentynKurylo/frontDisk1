@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const url = "http://localhost:5000/file"
 
 export default class FileService {
@@ -23,7 +22,6 @@ export default class FileService {
     }
 
     static searchFiles(search, dirId){
-        console.log(dirId)
         if(dirId) {
             return axios.get(`${url}/search?search=${search}&parent=${dirId}`, {
                 headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
@@ -44,7 +42,6 @@ export default class FileService {
     static postFile(file, dirId){
         const formData = new FormData()
         formData.append('file', file)
-        console.log("llll", file)
         if (dirId) {
             formData.append('parent', dirId)
         }
@@ -54,7 +51,6 @@ export default class FileService {
                onUploadProgress: progressEvent => {
                     if (progressEvent.total) {
                         uploadFile.progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-                        console.log(uploadFile)
                         return uploadFile
                     }
                 }
@@ -63,16 +59,12 @@ export default class FileService {
     }
 
     static async downloadFile(file){
-        console.log('kkkkkk')
         const response = await fetch(`${url}/download?id=${file._id}`, {
             headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
         })
-        console.log(response)
         if(response.status === 200){
             const blob = await response.blob()
-            console.log(blob)
             const downloadUrl = window.URL.createObjectURL(blob)
-            console.log(downloadUrl)
             const link = document.createElement('a')
             link.href = downloadUrl
             link.download = file.name
@@ -88,7 +80,6 @@ export default class FileService {
         })
     }
     static avatarUpload(file){
-        console.log('kkkk')
         const formData = new FormData()
         formData.append('file', file)
         return axios.post(url + '/avatarUpload', formData, {headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}})

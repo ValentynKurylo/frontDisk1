@@ -6,7 +6,6 @@ import './upLoader.css'
 const UpLoader = () => {
     const dispatch = useDispatch()
     let UploaderReducer = useSelector(state => state.UploaderReducer)
-    console.log("fff", UploaderReducer.filesUpload)
     return (
         <div>
             <div className="uploader">

@@ -18,9 +18,7 @@ const CreateModal = () => {
         if(currentDir){
             setDir(dir.parent = currentDir)
         }
-        console.log(dir)
         FileService.createDir(dir).then(value => {
-            console.log(value)
             dispatch({type: "ADD_FILE", payload: value.data})
         })
 

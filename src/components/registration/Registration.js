@@ -14,10 +14,8 @@ const Registration = () => {
         setUser(user.fullName = nameRef.current.value)
         setUser(user.email = emailRef.current.value)
         setUser(user.password = passwordRef.current.value)
-        console.log(user)
         UserService.registration(user).then(value => {
              alert(value.data.message)
-            console.log(value)
         })
     }
 

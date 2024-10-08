@@ -15,12 +15,10 @@ const Login = () => {
 
     function LoginFunc(e) {
         e.preventDefault()
-        console.log("login")
         setUser(user.email = emailRef.current.value)
         setUser(user.password = passwordRef.current.value)
         try {
             UserService.login(user).then(value => {
-                console.log(value)
                 if(value.data.status === 200) {
                     dispatch({type: 'SET_TOKEN', payload: value.data.token})
                     dispatch({type: 'SET_CURRENT_USER', payload: value.data.user})

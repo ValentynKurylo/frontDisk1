@@ -13,9 +13,7 @@ const UserPage = () => {
     const userAvatar = CurrentUser.avatar ? `${URL_API + CurrentUser.avatar}` : `${Avatar}`
     const [avt, setAvt] = useState(false)
     useEffect(()=>{
-        console.log("jjjjj")
         UserService.auth().then(value=>{
-            console.log(value)
             dispatch({type: 'SET_TOKEN', payload: value.data.token})
             dispatch({type: 'SET_CURRENT_USER', payload: value.data.user})
         })

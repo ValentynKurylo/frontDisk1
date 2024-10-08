@@ -22,7 +22,6 @@ const FileComponent = () => {
     const [searchTime, setSearchTime] = useState(false)
 
     useEffect(()=>{
-        console.log(currentDir)
         dispatch({type: "SET_LOADER", payload: true})
         fileService.getFiles(currentDir, sort).then(value => {
             dispatch({type: 'SET_FILES', payload: value.data})
@@ -38,12 +37,10 @@ const FileComponent = () => {
     function fileUpload(e) {
         const url = "http://localhost:5000/file"
         const files1 = [...e.target.files]
-        console.log(files1)
         dispatch({type: 'SET_IS_VISIBLE', payload: true})
         for(let i = 0; i < files1.length; i++){
             const formData = new FormData()
             formData.append('file', files1[i])
-            console.log("llll", files1[i])
             if (currentDir) {
                 formData.append('parent', currentDir)
             }
@@ -54,19 +51,12 @@ const FileComponent = () => {
                 onUploadProgress: progressEvent => {
                     if (progressEvent.total) {
                         uploadFile.progress = Math.round((progressEvent.loaded * 100) / progressEvent.total)
-                        console.log(uploadFile)
                         dispatch({type: "CHANGE_UPLOAD_FILE", payload: uploadFile})
                     }
                 }
             }).then(value=>{
                 dispatch({type: "ADD_FILES", payload: value.data.file})
             })
-
-            /*FileService.postFile(files1[i], currentDir).then(value =>{
-
-                console.log("aaa", value)
-                dispatch({type: "CHANGE_UPLOAD_FILE", payload: uploadFile1})
-            })*/
         }
 
     }
@@ -85,7 +75,6 @@ const FileComponent = () => {
         event.preventDefault()
         event.stopPropagation()
         let files = [...event.dataTransfer.files]
-        console.log(files)
         for(let i = 0; i < files.length; i++){
             fileService.postFile(files[i], currentDir)
         }
@@ -93,7 +82,6 @@ const FileComponent = () => {
     }
 
     function searchFile(e) {
-        console.log("search", e.target.value)
         setSearch(e.target.value)
         if (searchTime !== false) {
             clearTimeout(searchTime)
@@ -101,7 +89,6 @@ const FileComponent = () => {
         if(e.target.value !== '') {
             setSearchTime(setTimeout((value)=>{
             fileService.searchFiles(value, currentDir).then(value => {
-                console.log(value.data)
                 dispatch({type: "SET_FILES", payload: value.data})
             })
             }, 500, e.target.value))

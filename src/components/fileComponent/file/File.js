@@ -12,7 +12,6 @@ const File = ({item}) => {
     const dispatch = useDispatch()
     const stackDir = useSelector(state => state.FileReducer.dirStack)
     function openDir(item) {
-        console.log(item)
         if(item.type === "dir"){
             stackDir.push(item._id)
             dispatch({type: "SET_CURRENT_DIR", payload: item._id})
@@ -34,7 +33,6 @@ const File = ({item}) => {
 
     function downloadClick(e) {
         e.stopPropagation()
-        console.log('dddd', item)
         FileService.downloadFile(item)
     }
 
